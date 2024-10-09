@@ -1,10 +1,12 @@
-
+import { NavLink } from "react-router-dom";
 
 export const LandingRoute = () => {
-    
-    return (
-        <>
-            <h1>HELLO WORLD</h1>
-        </>
-    )
-}
+  return (
+    <>
+      <h1>Login or sign up</h1>
+      <NavLink key="Dashboard" to="/app">
+        Login
+      </NavLink>
+    </>
+  );
+};

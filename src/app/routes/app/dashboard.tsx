@@ -1,26 +1,22 @@
-import { ContentLayout } from '../../../components/layouts/content-layout';
-
+import { ContentLayout } from "@/components/layouts/content-layout";
+import { brynEllison } from "@/testing/mockData/users";
 
 export const DashboardRoute = () => {
+  const user = brynEllison;
 
   return (
     <ContentLayout title="Dashboard">
-      <h1 className="text-xl">
-        Welcome user
-      </h1>
-      <h4 className="my-3">
-        Your role is : <b>NO DATA</b>
-      </h4>
+      <h1 className="text-xl">Hello, {user.firstName}</h1>
+      <h4 className="my-3">Hope you're having a nice day.</h4>
       <p className="font-medium">In this application you can:</p>
 
-        <ul className="my-4 list-inside list-disc">
-          <li>Create discussions</li>
-          <li>Edit discussions</li>
-          <li>Delete discussions</li>
-          <li>Comment on discussions</li>
-          <li>Delete all comments</li>
-        </ul>
-      
+      <ul className="my-4 list-inside list-disc">
+        <li>Create listings</li>
+        <li>Edit listings</li>
+        <li>Delete listings</li>
+        <li>Create lists</li>
+        <li>Search and view other users lists</li>
+      </ul>
     </ContentLayout>
   );
 };

@@ -5,6 +5,7 @@ import { HelmetProvider } from "react-helmet-async";
 
 import { queryConfig } from "../lib/react-query";
 import { MainErrorFallback } from "../components/errors/main";
+import { ThemeProvider } from "@/components/ui/theme-provider";
 
 type AppProviderProps = {
   children: React.ReactNode;
@@ -21,9 +22,11 @@ export const AppProvider = ({ children }: AppProviderProps) => {
   return (
     <ErrorBoundary FallbackComponent={MainErrorFallback}>
       <HelmetProvider>
-        <QueryClientProvider client={queryClient}>
-          {children}
-        </QueryClientProvider>
+        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+          <QueryClientProvider client={queryClient}>
+            {children}
+          </QueryClientProvider>
+        </ThemeProvider>
       </HelmetProvider>
     </ErrorBoundary>
   );

@@ -1,8 +1,8 @@
-import { Suspense } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Suspense } from "react";
+import { ErrorBoundary } from "react-error-boundary";
+import { Outlet, useLocation } from "react-router-dom";
 
-import { DashboardLayout } from '../../../components/layouts/dashboard-layout';
+import { DashboardLayout } from "@/components/layouts/dashboard-layout";
 
 export const AppRoot = () => {
   const location = useLocation();
