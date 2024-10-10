@@ -18,6 +18,35 @@ export const createAppRouter = (queryClient: QueryClient) =>
       element: <AppRoot />,
       children: [
         {
+          path: "lists",
+          lazy: async () => {
+            const { ListsRoute } = await import("./routes/app/lists/lists");
+            return { Component: ListsRoute };
+          },
+          // loader: async (args: LoaderFunctionArgs) => {
+          //   const { discussionsLoader } = await import(
+          //     "./routes/app/discussions/discussions"
+          //   );
+          //   return discussionsLoader(queryClient)(args);
+          // },
+        },
+        {
+          path: "lists/:listId",
+          lazy: async () => {
+            const { ListRoute } = await import("./routes/app/lists/list");
+            return { Component: ListRoute };
+          },
+        },
+        {
+          path: "listings/:listingId",
+          lazy: async () => {
+            const { ListingRoute } = await import(
+              "./routes/app/listings/listing"
+            );
+            return { Component: ListingRoute };
+          },
+        },
+        {
           path: "users",
           lazy: async () => {
             const { UsersRoute } = await import("./routes/app/users");

@@ -22,3 +22,28 @@ export type Location = Entity<{
   coordinates: string;
   description: string;
 }>;
+
+export type List = Entity<{
+  title: string;
+  author: string;
+  description: string;
+  image: string;
+  listType: "LOCATIONS" | "PRODUCTS";
+  listings: Array<String>;
+}>;
+
+export type LocationListing = Entity<{
+  name: string;
+  description: string;
+  address: string;
+  location: string;
+  image: string;
+}>;
+
+export type ProductListing = Entity<{
+  name: string;
+  description: string;
+  price: string;
+  productUrl: string;
+  image: string;
+}>;

@@ -1,5 +1,11 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { Home, PanelLeft, Users, MessageCircleHeart } from "lucide-react";
+import {
+  Home,
+  SquareMenu,
+  Users,
+  MessageCircleHeart,
+  ScrollText,
+} from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -11,12 +17,13 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
+  DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 
 import { Link } from "../ui/link";
 
-//import { brynEllison } from "@/testing/mockData/users";
+import { brynEllison } from "@/testing/mockData/users";
 
 type SideNavigationItem = {
   name: string;
@@ -36,9 +43,11 @@ const Logo = () => {
 };
 
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
+  const user = brynEllison;
   const navigate = useNavigate();
   const navigation = [
     { name: "Dashboard", to: ".", icon: Home },
+    { name: "Your Lists", to: "./lists", icon: ScrollText },
     {
       name: "Users",
       to: "./users",
@@ -84,8 +93,8 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
         <header className="sticky top-0 z-30 flex h-14 items-center justify-between gap-4 bg-background px-4 sm:static sm:h-auto sm:justify-end sm:border-0 sm:bg-transparent sm:px-6">
           <Drawer direction="left">
             <DrawerTrigger asChild>
-              <Button size="icon" variant="outline" className="sm:hidden">
-                <PanelLeft className="size-5" />
+              <Button size="icon" variant="ghost" className="sm:hidden">
+                <SquareMenu className="size-7" />
                 <span className="sr-only">Toggle Menu</span>
               </Button>
             </DrawerTrigger>
@@ -123,6 +132,9 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
               </div>
             </DrawerContent>
           </Drawer>
+          <div className="flex h-16 shrink-0 items-center px-4 sm:hidden">
+            <Logo />
+          </div>
           <DropdownMenu>
             <DropdownMenuTrigger>
               <Avatar>
@@ -131,6 +143,14 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
               </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
+              <DropdownMenuLabel
+                className={cn(
+                  "block px-4 py-2 text-sm text-popover-foreground"
+                )}
+              >
+                {user.userName}
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator />
               <DropdownMenuItem
                 onClick={() => navigate("./profile")}
                 className={cn(

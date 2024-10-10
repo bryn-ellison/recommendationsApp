@@ -4,47 +4,47 @@
 
 @layer base {
   :root {
-    --background: 14 27% 95%;
-    --foreground: 14 5% 0%;
-    --card: 14 27% 90%;
-    --card-foreground: 14 5% 10%;
-    --popover: 14 27% 95%;
-    --popover-foreground: 14 95% 0%;
-    --primary: 14 100% 86.9%;
-    --primary-foreground: 0 0% 0%;
-    --secondary: 14 27% 70%;
+    --background: 27 6% 95%;
+    --foreground: 27 5% 0%;
+    --card: 27 6% 90%;
+    --card-foreground: 27 5% 10%;
+    --popover: 27 6% 95%;
+    --popover-foreground: 27 95% 0%;
+    --primary: 27 9% 43.5%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 27 10% 70%;
     --secondary-foreground: 0 0% 0%;
-    --muted: -24 27% 85%;
-    --muted-foreground: 14 5% 35%;
-    --accent: -24 27% 80%;
-    --accent-foreground: 14 5% 10%;
+    --muted: -11 10% 85%;
+    --muted-foreground: 27 5% 35%;
+    --accent: -11 10% 80%;
+    --accent-foreground: 27 5% 10%;
     --destructive: 0 50% 30%;
-    --destructive-foreground: 14 5% 90%;
-    --border: 14 27% 50%;
-    --input: 14 27% 18%;
-    --ring: 14 100% 86.9%;
+    --destructive-foreground: 27 5% 90%;
+    --border: 27 20% 50%;
+    --input: 27 20% 18%;
+    --ring: 27 9% 43.5%;
     --radius: 0.5rem;
   }
   .dark {
-    --background: 14 27% 5%;
-    --foreground: 14 5% 90%;
-    --card: 14 27% 0%;
-    --card-foreground: 14 5% 90%;
-    --popover: 14 27% 5%;
-    --popover-foreground: 14 5% 90%;
-    --primary: 14 100% 86.9%;
-    --primary-foreground: 0 0% 0%;
-    --secondary: 14 27% 10%;
+    --background: 27 10% 5%;
+    --foreground: 27 5% 90%;
+    --card: 27 6% 0%;
+    --card-foreground: 27 5% 90%;
+    --popover: 27 10% 5%;
+    --popover-foreground: 27 5% 90%;
+    --primary: 27 9% 43.5%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 27 10% 10%;
     --secondary-foreground: 0 0% 100%;
-    --muted: -24 27% 15%;
-    --muted-foreground: 14 5% 60%;
-    --accent: -24 27% 15%;
-    --accent-foreground: 14 5% 90%;
+    --muted: -11 10% 15%;
+    --muted-foreground: 27 5% 60%;
+    --accent: -11 10% 15%;
+    --accent-foreground: 27 5% 90%;
     --destructive: 0 50% 30%;
-    --destructive-foreground: 14 5% 90%;
-    --border: 14 27% 18%;
-    --input: 14 27% 18%;
-    --ring: 14 100% 86.9%;
+    --destructive-foreground: 27 5% 90%;
+    --border: 27 20% 18%;
+    --input: 27 20% 18%;
+    --ring: 27 9% 43.5%;
     --radius: 0.5rem;
   }
 }
@@ -60,8 +60,7 @@
 
 body {
   margin: 0;
-  font-family: "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
-    "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
