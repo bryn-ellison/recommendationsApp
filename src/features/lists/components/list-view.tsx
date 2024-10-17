@@ -20,6 +20,7 @@ import {
 import { listings } from "@/testing/mockData/listings-mock-data";
 
 import { ContentLayout } from "@/components/layouts/content-layout";
+import { Badge } from "@/components/ui/badge";
 
 export const ListView = ({ listId }: { listId: string }) => {
   const listData: Array<List> = [
@@ -49,13 +50,22 @@ export const ListView = ({ listId }: { listId: string }) => {
             <CardHeader>
               <CardTitle
                 onClick={() => navigate(`/app/listings/${listing.id}`)}
-                className="hover:underline"
+                className="hover:underline cursor-pointer"
               >
                 {listing.name}
               </CardTitle>
               <CardDescription className="font-bold">
                 {listing.address}
               </CardDescription>
+              <Badge
+                variant={"secondary"}
+                onClick={() =>
+                  navigate(`/app/locations/${listing.location.id}`)
+                }
+                className="cursor-pointer"
+              >
+                {listing.location.name}
+              </Badge>
             </CardHeader>
             <CardContent>
               <CardDescription>{listing.description}</CardDescription>

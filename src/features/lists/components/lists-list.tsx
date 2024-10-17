@@ -32,7 +32,7 @@ export const ListsList = () => {
         <Card
           key={list.id}
           className="hover:bg-muted"
-          onClick={() => navigate(`./${list.id}`)}
+          onClick={() => navigate(`/app/lists/${list.id}`)}
         >
           <AspectRatio ratio={16 / 9}>
             <CardImage

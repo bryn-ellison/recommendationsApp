@@ -7,7 +7,7 @@ export const barsOfEastLondon: List = {
   author: "001",
   listType: "LOCATIONS",
   description:
-    "Take a languid tour of the finest watering holes in the East of London.",
+    "Take a tour of the finest watering holes in the East of London.",
   image:
     "https://www.hot-dinners.com/images/stories/features/2024/winebars/eastlondon/dans.jpg",
   listings: ["001", "002", "003"],
@@ -31,7 +31,7 @@ export const prettyThings: List = {
   title: "Pretty Things for Kitchens",
   author: "001",
   listType: "PRODUCTS",
-  description: "A selection of the prettiest useful kitchen items.",
+  description: "A selection of the prettiest and most useful kitchen items.",
   image:
     "https://sellvia.com/wp-content/uploads/webp/2022/10/find-your-niche_jpg.webp",
   listings: ["007", "008", "009"],

@@ -21,6 +21,7 @@ export type Location = Entity<{
   name: string;
   coordinates: string;
   description: string;
+  image: string;
 }>;
 
 export type List = Entity<{
@@ -32,11 +33,39 @@ export type List = Entity<{
   listings: Array<String>;
 }>;
 
+export type ListItem = Entity<{
+  title: string;
+  description: string;
+  listing: LocationListing | ProductListing;
+  featuredInfo: Array<FeaturedInfo>;
+  images: Array<string>;
+}>;
+
+export type FeaturedInfo = Entity<{
+  heading: string;
+  content: string;
+}>;
+
+export type LocationTag = Entity<{
+  listingTypes: Array<LocationListingType>;
+  tagTitle: string;
+}>;
+
+export type LocationListingType =
+  | "BAR"
+  | "PUB"
+  | "CAFE"
+  | "RESTAURANT"
+  | "SHOP"
+  | "ATTRACTION";
+
 export type LocationListing = Entity<{
   name: string;
+  listingTypes: Array<LocationListingType>;
+  tags: Array<LocationTag>;
   description: string;
   address: string;
-  location: string;
+  location: Location;
   image: string;
 }>;
 

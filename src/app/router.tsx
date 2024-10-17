@@ -1,6 +1,10 @@
 import { QueryClient, useQueryClient } from "@tanstack/react-query";
 import { useMemo } from "react";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  RouterProvider,
+  createBrowserRouter,
+  ScrollRestoration,
+} from "react-router-dom";
 
 import { AppRoot } from "./routes/app/root";
 
@@ -44,6 +48,24 @@ export const createAppRouter = (queryClient: QueryClient) =>
               "./routes/app/listings/listing"
             );
             return { Component: ListingRoute };
+          },
+        },
+        {
+          path: "locations",
+          lazy: async () => {
+            const { LocationsRoute } = await import(
+              "./routes/app/locations/locations"
+            );
+            return { Component: LocationsRoute };
+          },
+        },
+        {
+          path: "locations/:locationId",
+          lazy: async () => {
+            const { LocationRoute } = await import(
+              "./routes/app/locations/location"
+            );
+            return { Component: LocationRoute };
           },
         },
         {

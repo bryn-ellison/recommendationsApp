@@ -1,10 +1,11 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, ScrollRestoration } from "react-router-dom";
 import {
   Home,
   SquareMenu,
   Users,
   MessageCircleHeart,
   ScrollText,
+  MapPin,
 } from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -48,6 +49,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
   const navigation = [
     { name: "Dashboard", to: ".", icon: Home },
     { name: "Your Lists", to: "./lists", icon: ScrollText },
+    { name: "Locations", to: "./locations", icon: MapPin },
     {
       name: "Users",
       to: "./users",
@@ -56,6 +58,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
   ].filter(Boolean) as SideNavigationItem[];
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
+      <ScrollRestoration />
       <aside className="fixed inset-y-0 left-0 z-10 hidden w-60 flex-col bg-secondary sm:flex">
         <nav className="flex flex-col items-center gap-4 px-2 py-4">
           <div className="flex h-16 shrink-0 items-center px-4">
@@ -104,27 +107,28 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
                   <Logo />
                 </div>
                 {navigation.map((item) => (
-                  <NavLink
-                    key={item.name}
-                    to={item.to}
-                    end
-                    className={({ isActive }) =>
-                      cn(
-                        "text-secondary-foreground hover:bg-accent",
-                        "group flex flex-1 w-full items-center p-2 text-base font-medium",
-                        isActive && "bg-muted text-muted-foreground"
-                      )
-                    }
-                  >
-                    <item.icon
-                      className={cn(
-                        "text-secondary-foreground hover:bg-accent",
-                        "mr-4 size-6 shrink-0"
-                      )}
-                      aria-hidden="true"
-                    />
-                    {item.name}
-                  </NavLink>
+                  <DrawerTrigger asChild key={item.name}>
+                    <NavLink
+                      to={item.to}
+                      end
+                      className={({ isActive }) =>
+                        cn(
+                          "text-secondary-foreground hover:bg-accent",
+                          "group flex flex-1 w-full items-center p-2 text-base font-medium",
+                          isActive && "bg-muted text-muted-foreground"
+                        )
+                      }
+                    >
+                      <item.icon
+                        className={cn(
+                          "text-secondary-foreground hover:bg-accent",
+                          "mr-4 size-6 shrink-0"
+                        )}
+                        aria-hidden="true"
+                      />
+                      {item.name}
+                    </NavLink>
+                  </DrawerTrigger>
                 ))}
               </nav>
               <div className="absolute bottom-0 left-0 m-4">

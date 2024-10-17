@@ -5,6 +5,8 @@ export const eastLondon: Location = {
   createdAt: Date.now(),
   name: "East London",
   coordinates: "51.5563° N, 0.0655° E",
+  image:
+    "https://www.getliving.com/wp-content/uploads/2022/04/Hackney-Canal-Graffiti.png",
   description:
     "East London is the northeastern part of London, England, east of the ancient City of London and north of the River Thames as it begins to widen. Containing areas in the historic counties of Middlesex and Essex, East London developed as London's docklands and the primary industrial centre.",
 };
@@ -26,6 +28,7 @@ export const centralLondon: Location = {
   createdAt: Date.now(),
   name: "Central London",
   coordinates: "51.5074° N, 0.1272° W",
+  image: "https://www.missionbreakout.london/public/img/big/londonview.jpg",
   description:
     "Central London is the middle part of London, England. It contains lots of tourists and some quite good art galleries.",
 };
