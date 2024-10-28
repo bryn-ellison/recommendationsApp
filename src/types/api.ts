@@ -17,6 +17,11 @@ export type User = Entity<{
   bio: string;
 }>;
 
+export type AuthResponse = {
+  jwt: string;
+  user: User;
+};
+
 export type Location = Entity<{
   name: string;
   coordinates: string;

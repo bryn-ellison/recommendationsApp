@@ -18,6 +18,20 @@ export const createAppRouter = (queryClient: QueryClient) =>
       },
     },
     {
+      path: "/auth/register",
+      lazy: async () => {
+        const { RegisterRoute } = await import("./routes/auth/register");
+        return { Component: RegisterRoute };
+      },
+    },
+    {
+      path: "/auth/login",
+      lazy: async () => {
+        const { LoginRoute } = await import("./routes/auth/login");
+        return { Component: LoginRoute };
+      },
+    },
+    {
       path: "/app",
       element: <AppRoot />,
       children: [
