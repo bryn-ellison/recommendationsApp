@@ -10,6 +10,8 @@ const createEnv = () => {
       .optional(),
     APP_URL: z.string().optional().default("http://localhost:3000"),
     APP_MOCK_API_PORT: z.string().optional().default("8080"),
+    SUPABASE_URL: z.string().default("https://oiwwrgokymchhqccitbz.supabase.co"),
+    SUPABASE_KEY: z.string().default("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9pd3dyZ29reW1jaGhxY2NpdGJ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjkyNTQ0MzEsImV4cCI6MjA0NDgzMDQzMX0.nMHJSyCQkWKG2qei77h3R25HkBPjqJZOfJbKgiTRRf0"),
   });
 
   const envVars = Object.entries(import.meta.env).reduce<

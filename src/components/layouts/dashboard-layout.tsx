@@ -25,6 +25,7 @@ import { cn } from "@/lib/utils";
 import { Link } from "../ui/link";
 
 import { brynEllison } from "@/testing/mockData/users";
+import { useLogout } from "@/lib/auth";
 
 type SideNavigationItem = {
   name: string;
@@ -45,6 +46,7 @@ const Logo = () => {
 
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
   const user = brynEllison;
+  const logout = useLogout();
   const navigate = useNavigate();
   const navigation = [
     { name: "Dashboard", to: ".", icon: Home },
@@ -168,7 +170,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
                 className={cn(
                   "block px-4 py-2 text-sm text-popover-foreground w-full"
                 )}
-                onClick={() => null}
+                onClick={() => logout.mutate({})}
               >
                 Sign Out
               </DropdownMenuItem>

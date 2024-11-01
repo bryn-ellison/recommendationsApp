@@ -5,18 +5,25 @@ import { z } from "zod";
 import { AuthResponse, User } from "@/types/api";
 
 import { api } from "./api-client";
+import {
+  supabase,
+  supabaseLogin,
+  supabaseLogout,
+  supabaseSignUpUser,
+} from "./supabaseClient";
 
 // api call definitions for auth (types, schemas, requests):
 // these are not part of features as this is a module shared across features
 
-const getUser = async (): Promise<User> => {
-  const response = await api.get("/auth/me");
-
-  return response.data;
+const getUser = async () => {
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  return user;
 };
 
-const logout = (): Promise<void> => {
-  return api.post("/auth/logout");
+const logout = async (): Promise<void> => {
+  return supabaseLogout();
 };
 
 export const loginInputSchema = z.object({
@@ -25,9 +32,9 @@ export const loginInputSchema = z.object({
 });
 
 export type LoginInput = z.infer<typeof loginInputSchema>;
+
 const loginWithEmailAndPassword = (data: LoginInput): Promise<AuthResponse> => {
-  console.log(data)
-  return api.post("/Auth/login", data);
+  return supabaseLogin(data);
 };
 
 export const registerInputSchema = z.object({
@@ -43,20 +50,18 @@ export type RegisterInput = z.infer<typeof registerInputSchema>;
 const registerWithEmailAndPassword = (
   data: RegisterInput
 ): Promise<AuthResponse> => {
-  return api.post("/auth/register", data);
+  return supabaseSignUpUser(data);
 };
 
 const authConfig = {
   userFn: getUser,
   loginFn: async (data: LoginInput) => {
     const response = await loginWithEmailAndPassword(data);
-    console.log(response.user)
-    console.log(response.jwt)
-    return response.user;
+    return response;
   },
   registerFn: async (data: RegisterInput) => {
     const response = await registerWithEmailAndPassword(data);
-    return response.user;
+    return response;
   },
   logoutFn: logout,
 };
