@@ -8,18 +8,22 @@ export type Entity<T> = {
 } & BaseEntity;
 
 export type User = Entity<{
-  firstName: string;
-  lastName: string;
-  userName: string;
-  email: string;
-  role: "ADMIN" | "USER" | "MODERATOR" | "CURATOR";
   locations: Array<Location>;
   bio: string;
 }>;
 
 export type AuthResponse = {
   jwt: string;
-  user: User;
+  user: AuthUser;
+};
+
+export type AuthUser = {
+  id: string;
+  firstName: string;
+  lastName: string;
+  userName: string;
+  email: string;
+  role: "ADMIN" | "USER" | "MODERATOR" | "CURATOR";
 };
 
 export type Location = Entity<{

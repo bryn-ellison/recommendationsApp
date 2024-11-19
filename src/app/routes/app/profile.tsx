@@ -1,8 +1,6 @@
 import { ContentLayout } from "@/components/layouts/content-layout";
 //import { UpdateProfile } from '@/features/users/components/update-profile';
-//import { useUser } from "@/lib/auth";
-
-import { brynEllison } from "@/testing/mockData/users";
+import { useUser } from "@/lib/auth";
 
 type EntryProps = {
   label: string;
@@ -17,9 +15,8 @@ const Entry = ({ label, value }: EntryProps) => (
   </div>
 );
 
-const user = brynEllison;
-
 export const ProfileRoute = () => {
+  const user = useUser().data;
   if (!user) return null;
 
   return (
@@ -41,10 +38,10 @@ export const ProfileRoute = () => {
             <Entry label="First Name" value={user.firstName} />
             <Entry label="Last Name" value={user.lastName} />
             <Entry label="User Name" value={user.userName} />
-            <Entry label="Location" value={user.locations[0].name} />
+            <Entry label="Location" value="" />
             <Entry label="Email Address" value={user.email} />
             <Entry label="Role" value={user.role} />
-            <Entry label="Bio" value={user.bio} />
+            <Entry label="Bio" value="" />
           </dl>
         </div>
       </div>

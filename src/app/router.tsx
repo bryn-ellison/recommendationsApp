@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import { AppRoot } from "./routes/app/root";
+import { ProtectedRoute } from "@/lib/auth";
 
 export const createAppRouter = (queryClient: QueryClient) =>
   createBrowserRouter([
@@ -33,7 +34,9 @@ export const createAppRouter = (queryClient: QueryClient) =>
     },
     {
       path: "/app",
-      element: <AppRoot />,
+      element: <ProtectedRoute>
+                 <AppRoot />
+               </ProtectedRoute>,
       children: [
         {
           path: "lists",

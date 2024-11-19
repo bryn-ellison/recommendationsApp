@@ -1,12 +1,13 @@
 import { ContentLayout } from "@/components/layouts/content-layout";
-import { brynEllison } from "@/testing/mockData/users";
+
+import { useUser } from "@/lib/auth";
 
 export const DashboardRoute = () => {
-  const user = brynEllison;
+  const user = useUser().data;
 
   return (
     <ContentLayout title="Dashboard">
-      <h1 className="text-xl">Hello, {user.firstName}</h1>
+      <h1 className="text-xl">Hello, {user?.firstName}</h1>
       <h4 className="my-3">Hope you're having a nice day.</h4>
       <p className="font-medium">In this application you can:</p>
 

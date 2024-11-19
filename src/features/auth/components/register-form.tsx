@@ -39,7 +39,6 @@ export const RegisterForm = ({ onSuccess }: RegisterFormProps) => {
 
   function onSubmit(values: z.infer<typeof registerInputSchema>) {
     registering.mutate(values);
-    console.log(values);
   }
 
   return (
