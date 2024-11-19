@@ -1,4 +1,5 @@
 import { ContentLayout } from "@/components/layouts/content-layout";
+import { Spinner } from "@/components/ui/spinner";
 //import { UpdateProfile } from '@/features/users/components/update-profile';
 import { useUser } from "@/lib/auth";
 
@@ -16,7 +17,18 @@ const Entry = ({ label, value }: EntryProps) => (
 );
 
 export const ProfileRoute = () => {
-  const user = useUser().data;
+  const userQuery = useUser();
+
+  if (userQuery.isLoading) {
+    return (
+      <div className="flex h-48 w-full items-center justify-center">
+        <Spinner size="large" />
+      </div>
+    );
+  }
+
+  const user = userQuery!.data;
+
   if (!user) return null;
 
   return (

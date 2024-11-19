@@ -1,4 +1,5 @@
 import { ContentLayout } from "@/components/layouts/content-layout";
+import { UsersList } from "@/features/users/components/users-list";
 
 export const usersLoader = () => async () => {
   return {};
@@ -7,7 +8,7 @@ export const usersLoader = () => async () => {
 export const UsersRoute = () => {
   return (
     <ContentLayout title="Users">
-      <p>Users info here.</p>
+      <UsersList />
     </ContentLayout>
   );
 };

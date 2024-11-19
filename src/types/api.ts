@@ -1,3 +1,5 @@
+import { string } from "zod";
+
 export type BaseEntity = {
   id: string;
   createdAt: number;
@@ -7,10 +9,11 @@ export type Entity<T> = {
   [K in keyof T]: T[K];
 } & BaseEntity;
 
-export type User = Entity<{
-  locations: Array<Location>;
-  bio: string;
-}>;
+export type ApiUser = {
+  id: string;
+  username: string;
+  role: "ADMIN" | "USER" | "MODERATOR" | "CURATOR";
+};
 
 export type AuthResponse = {
   jwt: string;
