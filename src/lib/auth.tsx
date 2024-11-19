@@ -2,11 +2,10 @@ import { configureAuth } from "react-query-auth";
 import { Navigate, useLocation } from "react-router-dom";
 import { z } from "zod";
 
-import { AuthResponse, User } from "@/types/api";
+import { AuthUser } from "@/types/api";
 
-import { api } from "./api-client";
 import {
-  supabase,
+  supabaseGetUserFromSession,
   supabaseLogin,
   supabaseLogout,
   supabaseSignUpUser,
@@ -16,10 +15,10 @@ import {
 // these are not part of features as this is a module shared across features
 
 const getUser = async () => {
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  return user;
+  // const {
+  //   data: { user },
+  // } = await supabase.auth.getUser();
+  return supabaseGetUserFromSession();
 };
 
 const logout = async (): Promise<void> => {
@@ -33,7 +32,7 @@ export const loginInputSchema = z.object({
 
 export type LoginInput = z.infer<typeof loginInputSchema>;
 
-const loginWithEmailAndPassword = (data: LoginInput): Promise<AuthResponse> => {
+const loginWithEmailAndPassword = (data: LoginInput): Promise<AuthUser> => {
   return supabaseLogin(data);
 };
 
@@ -49,7 +48,7 @@ export type RegisterInput = z.infer<typeof registerInputSchema>;
 
 const registerWithEmailAndPassword = (
   data: RegisterInput
-): Promise<AuthResponse> => {
+): Promise<AuthUser> => {
   return supabaseSignUpUser(data);
 };
 

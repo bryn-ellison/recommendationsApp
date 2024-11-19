@@ -2,13 +2,16 @@ import Axios, { InternalAxiosRequestConfig } from "axios";
 
 import { useToast } from "@/hooks/use-toast";
 import { env } from "@/config/env";
+import { supabaseGetJwt } from "./supabaseClient";
 
-function authRequestInterceptor(config: InternalAxiosRequestConfig) {
+async function authRequestInterceptor(config: InternalAxiosRequestConfig) {
   if (config.headers) {
+    config.headers.Authorization = await supabaseGetJwt();
     config.headers.Accept = "application/json";
   }
 
   config.withCredentials = true;
+
   return config;
 }
 

@@ -8,6 +8,8 @@ import {
   MapPin,
 } from "lucide-react";
 
+import { useLogout, useUser } from "@/lib/auth";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
@@ -23,9 +25,6 @@ import {
 import { cn } from "@/lib/utils";
 
 import { Link } from "../ui/link";
-
-import { brynEllison } from "@/testing/mockData/users";
-import { useLogout } from "@/lib/auth";
 
 type SideNavigationItem = {
   name: string;
@@ -45,7 +44,7 @@ const Logo = () => {
 };
 
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
-  const user = brynEllison;
+  const user = useUser().data;
   const logout = useLogout();
   const navigate = useNavigate();
   const navigation = [
@@ -58,6 +57,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
       icon: Users,
     },
   ].filter(Boolean) as SideNavigationItem[];
+
   return (
     <div className="flex min-h-screen w-full flex-col bg-muted/40">
       <ScrollRestoration />
@@ -154,7 +154,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
                   "block px-4 py-2 text-sm text-popover-foreground"
                 )}
               >
-                {user.userName}
+                {user?.userName}
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem
